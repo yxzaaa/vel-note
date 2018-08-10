@@ -1,0 +1,64 @@
+.container{
+  width:750rpx;
+  overflow: hidden;
+}
+view,scroll-view{
+  box-sizing: border-box;
+}
+.placeholder{
+  color:#919191;
+}
+.car-list-box{
+  width:750rpx;
+  padding:30rpx;
+}
+.car-list{
+  width:690rpx;
+  padding:20rpx 0rpx;
+}
+.car-list>.car-item{
+  width:690rpx;
+  border-bottom:1px solid #eee;
+  line-height: 110rpx;
+  padding:0rpx 15rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.car-list>.car-item:last-child{
+  border: none;
+}
+.car-list>.car-item>.vel-num{
+  color:#777777;
+  font-size: 32rpx;
+}
+.car-list>.car-item>.vel-money>view{
+  display: inline-block;
+}
+.car-list>.car-item>.vel-money>text{
+  display: inline-block;
+  width:100rpx;
+  line-height: 48rpx;
+  margin:25rpx;
+  background: #ff8b2e;
+  text-align: center;
+  color:#fff;
+  font-size: 26rpx;
+  border-radius: 25rpx;
+}
+.car-list>.car-item>.vel-money>view>text{
+  display: inline-block;
+  font-size: 30rpx;
+  color:#777777;
+  line-height: 110rpx;
+}
+.fix-head{
+  width:750rpx !important;
+  position: fixed;
+  top:0rpx;
+  left:0rpx;
+  padding:30rpx;
+  background: #fff;
+}
+.fix-list{
+  padding-top:90rpx !important;
+}

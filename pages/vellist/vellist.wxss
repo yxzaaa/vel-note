@@ -1,0 +1,25 @@
+.search-box{
+  padding:0rpx 30rpx;
+  overflow: hidden;
+}
+.search-box>text{
+  line-height: 44px;
+  font-size: 34rpx;
+  color:#47b4c8;
+  font-weight: bold;
+  display: inline-block;
+  width:100%;
+  text-align: center;
+}
+.search-box>input{
+  width:670rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  display: inline-block;
+  padding:20rpx 10rpx;
+  border-bottom: 1px solid #47b4c8;
+  color:#47b4c8;
+}
+.car-list-box{
+  padding-top:100rpx;
+}

@@ -1,0 +1,81 @@
+/* pages/detail/detail.wxss */
+.atCom{
+  width:750rpx;
+  background: #47b4c8;
+  overflow: hidden;
+}
+.atCom text{
+  display: inline-block;
+  width:750rpx;
+  line-height: 200rpx;
+  text-align: center;
+  font-size: 42rpx;
+  font-weight: bold;
+  color:#b2e5ee;
+}
+.late-box{
+  width:750rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #eee;
+}
+.late-box>text{
+  display: inline-block;
+  width:375rpx;
+  line-height:200rpx;
+  text-align: center;
+  font-size: 60rpx;
+  color:#777;
+  border-right:1px solid #eee;
+  box-sizing: border-box;
+}
+.late-box>view{
+  width:375rpx;
+  line-height:200rpx;
+  position: relative;
+}
+.late-box>view>text{
+  display: inline-block;
+  width:100%;
+  line-height: 200rpx;
+  text-align: center;
+  font-size: 60rpx;
+  color:#47b4c8;
+}
+.late-item{
+  position: absolute;
+  top:10rpx;
+  right:10rpx;
+  display: inline-block;
+  width:100rpx;
+  line-height: 48rpx;
+  margin:10rpx;
+  background: #ff8b2e;
+  text-align: center;
+  color:#fff;
+  font-size: 26rpx;
+  border-radius: 25rpx;
+}
+.more-info{
+  width:750rpx;
+}
+.more-info>text{
+  display: inline-block;
+  width:750rpx;
+  text-align: center;
+  border-bottom:1px solid #eee;
+  color:#999;
+  padding:30rpx 0rpx;
+  font-size: 32rpx;
+}
+.sendMsg{
+  position: fixed;
+  bottom: 0rpx;
+  left:0rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background: #47b4c8;
+  color:#fff;
+  width:750rpx;
+}

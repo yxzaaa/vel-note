@@ -1,0 +1,29 @@
+<!-- index.wxml -->
+<view class='container'> 
+  <view class='top-box'>
+    <text class='total-num'>{{totalVelNum}}</text>
+    <text class='total-title'>记录车辆总数</text>
+  </view>
+  <view class='car-list-box'>
+    <view class='car-list-head {{isFix == true?"fix-head":""}}'>
+      <text>欠费车辆</text>
+      <input placeholder='按车牌号查询车辆' placeholder-class='placeholder' bindconfirm='searchVel'></input>
+      <view class='btn-group'>
+        <text class='{{isAll==false?"late-active":""}}' bindtap='showLate'>只看逾期</text>
+        <text class='{{isAll==true?"all-active":""}}' bindtap='showAll'>全部</text>
+      </view>
+    </view>
+    <view class='car-list {{isFix == true?"fix-list":""}}'>
+      <view class='car-item' wx:for='{{carList}}' bindtap='toDetail' wx:key='{{index}}'>
+        <text class='vel-num'>{{item.velNum}}</text>
+        <view class='vel-money'>
+          <text wx:if='{{item.isLate}}'>逾期</text>
+          <view>
+            <text>欠费：</text>
+            <text style='color:#47b4c8;'>￥{{item.noNum}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

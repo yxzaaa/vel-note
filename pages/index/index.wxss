@@ -1,0 +1,56 @@
+/* index.wxss */
+.top-box{
+  width:750rpx;
+  background: #47b4c8;
+  padding-bottom: 20rpx;
+}
+.top-box .total-num{
+  display: block;
+  width:750rpx;
+  line-height: 180rpx;
+  font-size: 120rpx;
+  text-align: center;
+  color:#b2e5ee;
+  font-weight: bold;
+}
+.top-box .total-title{
+  width:750rpx;
+  display: block;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  text-align: center;
+  color:#fff;
+}
+.car-list-box .car-list-head{
+  width:690rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.car-list-box .car-list-head>text{
+  color:#47b4c8;
+  font-size: 36rpx;
+  line-height: 60rpx;
+}
+.car-list-box .car-list-head input{
+  display: inline-block;
+  width:260rpx;
+  border-bottom:1px solid #47b4c8;
+  font-size: 30rpx;
+  color:#919191;
+  padding:0px 10rpx;
+}
+.car-list-box .car-list-head>.btn-group{
+  width:200rpx;
+}
+.car-list-box .car-list-head>.btn-group text{
+  color:#919191;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  margin-right:20rpx;
+}
+.all-active{
+  color:#47b4c8 !important;
+}
+.late-active{
+  color:#ff8b2e !important;
+}

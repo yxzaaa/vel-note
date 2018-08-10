@@ -1,0 +1,19 @@
+<view class='container'>
+  <view class='search-box fix-head'>
+    <input placeholder='按户主或公司名搜索' placeholder-class='placeholder' bindconfirm='searchVel'></input>
+  </view>
+  <view class='car-list-box'>
+    <view class='car-list'>
+      <view class='car-item' wx:for='{{groupList}}' bindtap='toVelList' wx:key='{{index}}'>
+        <text class='vel-num'>{{item.comName}}</text>
+        <view class='vel-money'>
+          <text wx:if='{{item.hasLate}}'>有逾期</text>
+          <view>
+            <text>总欠费：</text>
+            <text style='color:#47b4c8;'>￥{{item.totalNoPay}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

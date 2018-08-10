@@ -1,0 +1,18 @@
+<!-- 车辆详情页面 -->
+<view class='container'>
+  <view class='atCom'>
+    <text>XXX公司</text>
+  </view>
+  <view class='late-box'>
+    <text>应缴</text>
+    <view>
+      <text>￥21.4</text>
+      <view class='late-item'>逾期</view>
+    </view>
+  </view>
+  <view class='more-info'>
+    <text>安装人员：mary</text>
+    <text>安装时间：2018-4-2</text>
+  </view>
+  <view class='sendMsg'>发送催缴信息</view>
+</view>
