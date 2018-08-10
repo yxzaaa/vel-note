@@ -21,7 +21,6 @@ Page({
     });
     var query = wx.createSelectorQuery();
     query.select('.top-box').boundingClientRect(function(rect){
-      console.log(rect);
       that.setData({
         topHeight:rect.height
       })
