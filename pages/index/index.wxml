@@ -1,6 +1,6 @@
 <!-- index.wxml -->
 <view class='container'> 
-  <view class='top-box' style='{{trans}}'>
+  <view class='top-box'>
     <text class='total-num'>{{totalVelNum}}</text>
     <text class='total-title'>记录车辆总数</text>
     <input placeholder='按车牌号查询车辆' placeholder-class='placeholder' bindconfirm='searchVel' value='{{searchText}}'></input>
@@ -8,8 +8,6 @@
   <view class='car-list-box'>
     <view class='car-list-head {{isFix == true?"fix-head":""}}'>
       <text>欠费车辆</text>
-      <!-- <input placeholder='按车牌号查询车辆' placeholder-class='placeholder' 
-      bindconfirm='searchVel' value='{{searchText}}' wx:if='{{showSearch}}'></input> -->
       <view class='btn-group'>
         <text class='{{isAll==false?"late-active":""}}' bindtap='showLate'>只看逾期</text>
         <text class='{{isAll==true?"all-active":""}}' bindtap='showAll'>全部</text>

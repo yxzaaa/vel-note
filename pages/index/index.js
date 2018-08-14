@@ -8,8 +8,6 @@ Page({
     totalVelNum:126,
     topHeight:0,
     searchText:'',
-    trans:'',
-    showSearch:false,
     carList:[]
   },
   onLoad: function () {
@@ -45,15 +43,11 @@ Page({
   onPageScroll:function(e){
     if (e.scrollTop >= this.data.topHeight){
       this.setData({
-        isFix:true,
-        showSearch:true,
-        trans: ''
+        isFix:true
       });
-    } else if (e.scrollTop < this.data.topHeight && e.scrollTop>=0){
+    } else if (e.scrollTop < this.data.topHeight){
       this.setData({
-        isFix: false,
-        showSearch:false,
-        trans: 'transform:translateY(' + parseInt(e.scrollTop*0.5)+'px);'
+        isFix: false
       });
     }
   },

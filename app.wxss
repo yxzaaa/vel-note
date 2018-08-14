@@ -11,6 +11,7 @@ view,scroll-view{
 .car-list-box{
   width:750rpx;
   padding:30rpx;
+  background: #fff;
 }
 .car-list{
   width:690rpx;

@@ -2,8 +2,6 @@
 .top-box{
   width:750rpx;
   background: #47b4c8;
-  position: relative;
-  z-index:1;
 }
 .top-box .total-num{
   display: block;
@@ -21,11 +19,6 @@
   font-size: 36rpx;
   text-align: center;
   color:#fff;
-}
-.car-list-box{
-  position: relative;
-  z-index: 2;
-  background: #fff;
 }
 .car-list-box .car-list-head{
   width:690rpx;
