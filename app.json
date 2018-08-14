@@ -8,10 +8,12 @@
     "pages/vellist/vellist"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 50
   },
   "tabBar": {
     "list": [
@@ -47,4 +49,5 @@
     "downloadFile": 10000
   },
   "debug": true
+
 }

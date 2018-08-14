@@ -13,5 +13,5 @@
   color:#47b4c8;
 }
 .car-list-box{
-  padding-top:100rpx;
+  padding-top:0rpx;
 }

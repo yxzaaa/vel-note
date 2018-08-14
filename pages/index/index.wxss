@@ -2,7 +2,8 @@
 .top-box{
   width:750rpx;
   background: #47b4c8;
-  padding-bottom: 20rpx;
+  position: relative;
+  z-index:1;
 }
 .top-box .total-num{
   display: block;
@@ -21,10 +22,25 @@
   text-align: center;
   color:#fff;
 }
+.car-list-box{
+  position: relative;
+  z-index: 2;
+  background: #fff;
+}
 .car-list-box .car-list-head{
   width:690rpx;
   display: flex;
   justify-content: space-between;
+}
+.top-box>input{
+  width:750rpx;
+  display: block;
+  padding:30rpx;
+  margin-top:20rpx;
+  border-bottom:1px solid #eee;
+  font-size: 34rpx;
+  color:#47b4c8;
+  background: #fff;
 }
 .car-list-box .car-list-head>text{
   color:#47b4c8;
@@ -40,17 +56,21 @@
   padding:0px 10rpx;
 }
 .car-list-box .car-list-head>.btn-group{
-  width:200rpx;
+  display: flex;
+  justify-content: flex-end;
 }
 .car-list-box .car-list-head>.btn-group text{
+  display: inline-block;
   color:#919191;
   font-size: 30rpx;
-  line-height: 60rpx;
-  margin-right:20rpx;
+  padding:0rpx 25rpx;
+  line-height: 64rpx;
 }
 .all-active{
-  color:#47b4c8 !important;
+  background: #47b4c8;
+  color:#fff !important;
 }
 .late-active{
-  color:#ff8b2e !important;
+  background: #ff8b2e;
+  color:#fff !important;
 }

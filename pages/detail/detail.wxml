@@ -1,18 +1,20 @@
 <!-- 车辆详情页面 -->
 <view class='container'>
   <view class='atCom'>
-    <text>XXX公司</text>
+    <text>{{carDetail.belong}}</text>
   </view>
   <view class='late-box'>
     <text>应缴</text>
     <view>
-      <text>￥21.4</text>
-      <view class='late-item'>逾期</view>
+      <text>￥{{carDetail.spay}}</text>
+      <view class='late-item' wx:if='{{carDetail.islate==1}}'>逾期</view>
     </view>
   </view>
   <view class='more-info'>
-    <text>安装人员：mary</text>
-    <text>安装时间：2018-4-2</text>
+    <text>安装人员：{{carDetail.insper}}</text>
+    <text>安装时间：{{carDetail.insdate}}</text>
+    <text>联系人：{{carDetail.conper}}</text>
+    <text>联系电话：{{carDetail.comphone}}</text>
   </view>
   <view class='sendMsg'>发送催缴信息</view>
 </view>

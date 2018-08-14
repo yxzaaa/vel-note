@@ -1,70 +1,75 @@
 // pages/group/group.js
+const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    groupList:[
-      {
-        comName:'XXX公司',
-        totalNoPay:'115.5',
-        hasLate:false
-      },
-      {
-        comName:'XXX公司',
-        totalNoPay:'115.5',
-        hasLate:true
-      },
-      {
-        comName:'XXX公司',
-        totalNoPay:'115.5',
-        hasLate:false
-      },
-      {
-        comName:'XXX公司',
-        totalNoPay:'115.5',
-        hasLate:false
-      },
-      {
-        comName:'XXX公司',
-        totalNoPay:'115.5',
-        hasLate:false
-      },
-      {
-        comName:'XXX公司',
-        totalNoPay:'115.5',
-        hasLate:false
-      },
-      {
-        comName:'XXX公司',
-        totalNoPay:'115.5',
-        hasLate:false
-      },
-      {
-        comName:'XXX公司',
-        totalNoPay:'115.5',
-        hasLate:false
-      },
-      {
-        comName:'XXX公司',
-        totalNoPay:'115.5',
-        hasLate:false
-      },
-    ]
+    groupList:[],
+    isFix:false,
+    searchText:''
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    var that = this;
     wx.setNavigationBarTitle({
       title: '公司群组',
     });
+    app.httpRequest('com.php?kind=selectAll',function(res){
+      var groupList = [];
+      res.data.map(function (item, index) {
+        groupList.push(item);
+      })
+      that.setData({
+        groupList: groupList
+      })
+    })
+  }, 
+  onPageScroll: function (e) {
+    if (e.scrollTop > 0) {
+      this.setData({
+        isFix: true
+      })
+    } else if (e.scrollTop <= 0) {
+      this.setData({
+        isFix: false
+      })
+    }
   },
-  toVelList:function(){
+  onPullDownRefresh: function () {
+    var that = this;
+    app.httpRequest('com.php?kind=selectAll', function (res) {
+      var groupList = [];
+      res.data.map(function (item, index) {
+        groupList.push(item);
+      })
+      that.setData({
+        groupList: groupList,
+        searchText:''
+      })
+      wx.stopPullDownRefresh();
+    })
+  },
+  searchCom: function (e) {
+    var that = this;
+    app.httpRequest('com.php?kind=searchCom&bname=' + e.detail.value, function (res) {
+      console.log(res);
+      var groupList = [];
+      res.data.map(function (item, index) {
+        groupList.push(item);
+      })
+      if (groupList.length == 0) {
+        wx.showToast({
+          title: '未找到要搜索的公司',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+      that.setData({
+        groupList: groupList
+      })
+    });
+  },
+  toVelList:function(event){
+    console.log(event);
     wx.navigateTo({
-      url: '../../pages/vellist/vellist'
+      url: '../../pages/vellist/vellist?bid='+event.currentTarget.dataset.bid
     })
   }
 })

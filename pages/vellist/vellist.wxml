@@ -1,16 +1,16 @@
 <view class='container'>
-  <view class='search-box fix-head'>
-    <input placeholder='按车牌号搜索车辆' placeholder-class='placeholder' bindconfirm='searchVel'></input>
+  <view class='search-box {{isFix == true?"fix-head":""}}'>
+    <input placeholder='按车牌号搜索车辆' placeholder-class='placeholder' bindconfirm='searchVel' value='{{searchText}}'></input>
   </view>
-  <view class='car-list-box'>
+  <view class='car-list-box {{isFix == true?"fix-list":""}}'>
     <view class='car-list'>
-      <view class='car-item' wx:for='{{carList}}' bindtap='toDetail' wx:key='{{index}}'>
-        <text class='vel-num'>{{item.velNum}}</text>
+      <view class='car-item' wx:for='{{carList}}' bindtap='toDetail' data-index='{{index}}' wx:key='{{index}}'>
+        <text class='vel-num'>{{item.vnum}}</text>
         <view class='vel-money'>
-          <text wx:if='{{item.isLate}}'>逾期</text>
+          <text wx:if='{{item.islate == 1}}'>逾期</text>
           <view>
             <text>总欠费：</text>
-            <text style='color:#47b4c8;'>￥{{item.noNum}}</text>
+            <text style='color:#47b4c8;'>￥{{item.spay}}</text>
           </view>
         </view>
       </view>

@@ -35,5 +35,16 @@ App({
   },
   globalData: {
     userInfo: null
+  },
+  httpRequest: function (url, successFn) {
+    var that = this;
+    wx.request({
+      url: 'http://lgkj.chuangkegf.com/velnote/' + url,
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: successFn
+    })
   }
 })

@@ -1,14 +1,16 @@
 //index.js
 //获取应用实例
-const app = getApp()
+const app = getApp();
 Page({
   data: {
     isAll:true,
     isFix:false,
     totalVelNum:126,
     topHeight:0,
-    carList:[],
-    currList:[]
+    searchText:'',
+    trans:'',
+    showSearch:false,
+    carList:[]
   },
   onLoad: function () {
     var that = this;
@@ -25,83 +27,92 @@ Page({
         topHeight:rect.height
       })
     }).exec();
-    wx.request({
-      url: 'http://lgkj.chuangkegf.com/vels.php',
-      data:{},
-      method:'POST',
-      header:{
-        'content-type':'application/json'
-      },
-      success:function(res){
-        console.log(res.data);
-        var carList = [];
-        for(var i=0;i<res.data.length;i++){
-          carList.push({
-            velNum:res.data[i].vNum,
-            noNum:res.data[i].vSpeed,
-            isLate:false
-          })
-        }
-        that.setData({
-          carList:carList
-        })
-      }
-    })
+    app.httpRequest('veh.php?kind=selectPay',function(res){
+      var carlist = [];
+      res.data.map(function(item,index){
+        carlist.push(item);
+      })
+      that.setData({  
+        carList:carlist
+      })
+    });
+    app.httpRequest('veh.php?kind=selectAll', function (res) {
+      that.setData({
+        totalVelNum: res.data.length
+      })
+    });
   },
   onPageScroll:function(e){
     if (e.scrollTop >= this.data.topHeight){
       this.setData({
-        isFix:true
-      })
-    } else if (e.scrollTop < this.data.topHeight){
+        isFix:true,
+        showSearch:true,
+        trans: ''
+      });
+    } else if (e.scrollTop < this.data.topHeight && e.scrollTop>=0){
       this.setData({
-        isFix: false
-      })
+        isFix: false,
+        showSearch:false,
+        trans: 'transform:translateY(' + parseInt(e.scrollTop*0.5)+'px);'
+      });
     }
   },
+  onPullDownRefresh:function(){
+      this.showAll();
+  },
   showAll:function(){
-    var currList = this.data.carList;
-    this.setData({
-      currList: currList,
-      isAll:true
+    var that = this;
+    app.httpRequest('veh.php?kind=selectPay', function (res) {
+      var carlist = [];
+      res.data.map(function (item, index) {
+        carlist.push(item);
+      })
+      that.setData({
+        carList: carlist,
+        isAll:true,
+        searchText: ''
+      });
+      wx.stopPullDownRefresh();
     });
   },
   showLate:function(){
-    var carList = this.data.carList;
-    var currList = [];
-    for(var i=0;i<carList.length;i++){
-      if(carList[i].isLate == true){
-        currList.push(carList[i]);
-      }
-    }
-    this.setData({
-      currList: currList,
-      isAll: false
+    var that = this;
+    app.httpRequest('veh.php?kind=selectLate', function (res) {
+      var carlist = [];
+      res.data.map(function (item, index) {
+        carlist.push(item);
+      })
+      that.setData({
+        carList: carlist,
+        isAll:false
+      })
     });
   },
   searchVel:function(e){
-    var carList = this.data.carList;
-    var currList = [];
-    for (var i = 0; i < carList.length; i++) {
-      if (carList[i].velNum == e.detail.value) {
-        currList.push(carList[i]);
-      }
-    }
-    if(currList.length == 0){
-      currList = carList;
-      wx.showToast({
-        title: '未找到要搜索的车辆',
-        icon:'none',
-        duration:2000
+    var that = this;
+    app.httpRequest('veh.php?kind=searchVeh&vnum='+e.detail.value, function (res) {
+      console.log(res);
+      var carlist = [];
+      res.data.map(function (item, index) {
+        carlist.push(item);
       })
-    }
-    this.setData({
-      currList: currList
+      if (carlist.length == 0) {
+        wx.showToast({
+          title: '未找到要搜索的车辆',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+      that.setData({
+        carList: carlist
+      })
     });
   },
-  toDetail:function(){
+  toDetail:function(event){
+    var currCar = this.data.carList[event.currentTarget.dataset.index];
+    console.log(currCar);
     wx.navigateTo({
-      url: '../../pages/detail/detail'
+      url: '../../pages/detail/detail?vnum='+currCar.vnum+'&belongid='+currCar.belongid
     })
   }
 })
