@@ -82,10 +82,9 @@ Page({
       })
     });
   },
-  searchVel:function(e){
+  searchVel:function(){
     var that = this;
-    app.httpRequest('veh.php?kind=searchVeh&vnum='+e.detail.value, function (res) {
-      console.log(res);
+    app.httpRequest('veh.php?kind=searchVeh&vnum=' + that.data.searchText, function (res) {
       var carlist = [];
       res.data.map(function (item, index) {
         carlist.push(item);
@@ -101,6 +100,11 @@ Page({
         carList: carlist
       })
     });
+  },
+  setText: function (e) {
+    this.setData({
+      searchText:e.detail.value
+    })
   },
   toDetail:function(event){
     var currCar = this.data.carList[event.currentTarget.dataset.index];

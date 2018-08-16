@@ -1,6 +1,7 @@
 .search-box{
   padding:0rpx 30rpx;
   overflow: hidden;
+  position: relative;
 }
 .search-box>text{
   line-height: 44px;
@@ -19,6 +20,14 @@
   padding:20rpx 10rpx;
   border-bottom: 1px solid #47b4c8;
   color:#47b4c8;
+}
+.search-box>image{
+  position: absolute;
+  width:60rpx;
+  height:60rpx;
+  right:40rpx;
+  bottom:22rpx;
+  z-index:10;
 }
 .car-list-box{
   padding-top:0rpx;

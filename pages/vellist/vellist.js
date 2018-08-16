@@ -49,9 +49,9 @@ Page({
       wx.stopPullDownRefresh();
     })
   },
-  searchVel: function (e) {
+  searchVel: function () {
     var that = this;
-    app.httpRequest('veh.php?kind=searchVeh&vnum=' + e.detail.value, function (res) {
+    app.httpRequest('veh.php?kind=searchVeh&vnum=' + that.data.searchText, function (res) {
       console.log(res);
       var carlist = [];
       res.data.map(function (item, index) {
@@ -68,6 +68,11 @@ Page({
         carList: carlist
       })
     });
+  },
+  setText: function (e) {
+    this.setData({
+      searchText: e.detail.value
+    })
   },
   toDetail: function (event) {
     var currCar = this.data.carList[event.currentTarget.dataset.index];

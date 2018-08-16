@@ -54,7 +54,7 @@ view,scroll-view{
 }
 .fix-head{
   width:750rpx !important;
-  position: fixed;
+  position: fixed !important;
   top:0rpx;
   left:0rpx;
   padding:30rpx;

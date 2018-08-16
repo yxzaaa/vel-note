@@ -2,6 +2,7 @@
 .top-box{
   width:750rpx;
   background: #47b4c8;
+  position: relative;
 }
 .top-box .total-num{
   display: block;
@@ -19,6 +20,14 @@
   font-size: 36rpx;
   text-align: center;
   color:#fff;
+}
+.top-box image{
+  position: absolute;
+  width:60rpx;
+  height:60rpx;
+  right:40rpx;
+  bottom:26rpx;
+  z-index:10;
 }
 .car-list-box .car-list-head{
   width:690rpx;

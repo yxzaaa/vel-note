@@ -3,7 +3,8 @@
   <view class='top-box'>
     <text class='total-num'>{{totalVelNum}}</text>
     <text class='total-title'>记录车辆总数</text>
-    <input placeholder='按车牌号查询车辆' placeholder-class='placeholder' bindconfirm='searchVel' value='{{searchText}}'></input>
+    <input placeholder='按车牌号查询车辆' placeholder-class='placeholder' bindconfirm='searchVel' bindinput='setText'></input>
+    <image src='../../assets/img/search.png' bindtap='searchVel'></image>
   </view>
   <view class='car-list-box'>
     <view class='car-list-head {{isFix == true?"fix-head":""}}'>

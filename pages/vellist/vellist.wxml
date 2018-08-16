@@ -1,6 +1,7 @@
 <view class='container'>
   <view class='search-box {{isFix == true?"fix-head":""}}'>
-    <input placeholder='按车牌号搜索车辆' placeholder-class='placeholder' bindconfirm='searchVel' value='{{searchText}}'></input>
+    <input placeholder='按车牌号搜索车辆' placeholder-class='placeholder' bindconfirm='searchVel' bindinput='setText'></input>
+    <image src='../../assets/img/search.png' bindtap='searchVel'></image>
   </view>
   <view class='car-list-box {{isFix == true?"fix-list":""}}'>
     <view class='car-list'>

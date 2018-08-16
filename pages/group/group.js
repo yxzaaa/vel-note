@@ -46,9 +46,9 @@ Page({
       wx.stopPullDownRefresh();
     })
   },
-  searchCom: function (e) {
+  searchCom: function () {
     var that = this;
-    app.httpRequest('com.php?kind=searchCom&bname=' + e.detail.value, function (res) {
+    app.httpRequest('com.php?kind=searchCom&bname=' + that.data.searchText, function (res) {
       console.log(res);
       var groupList = [];
       res.data.map(function (item, index) {
@@ -65,6 +65,11 @@ Page({
         groupList: groupList
       })
     });
+  },
+  setText: function (e) {
+    this.setData({
+      searchText: e.detail.value
+    })
   },
   toVelList:function(event){
     console.log(event);
