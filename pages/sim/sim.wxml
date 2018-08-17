@@ -1,2 +1,14 @@
-<!--pages/sim/sim.wxml-->
-<text>pages/sim/sim.wxml</text>
+<view class='container'>
+  <view class='top-box'>
+    <text class='total-num'>{{totalSimCount}}</text>
+    <text class='total-title'>SIM卡总数</text>
+  </view>
+  <view class='top-box'>
+    <text class='total-num'>{{simUsed}}</text>
+    <text class='total-title'>SIM卡已用</text>
+  </view>
+  <view class='top-box'>
+    <text class='total-num' style='color:#ff8b2e;'>{{simRest}}</text>
+    <text class='total-title'>SIM卡剩余</text>
+  </view>
+</view>

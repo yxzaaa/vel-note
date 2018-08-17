@@ -51,7 +51,7 @@ Page({
   },
   searchVel: function () {
     var that = this;
-    app.httpRequest('veh.php?kind=searchVeh&vnum=' + that.data.searchText, function (res) {
+    app.httpRequest('veh.php?kind=searchVehByCom&vnum=' + that.data.searchText +'&belongid='+that.data.belongid, function (res) {
       console.log(res);
       var carlist = [];
       res.data.map(function (item, index) {

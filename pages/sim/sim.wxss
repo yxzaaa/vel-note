@@ -1,1 +1,36 @@
 /* pages/sim/sim.wxss */
+.top-box{
+  width:750rpx;
+  height:33.33vh;
+  background: #fff;
+  position: relative;
+  border-bottom:1px solid #eee;
+}
+.top-box .total-num{
+  display: block;
+  width:750rpx;
+  line-height: 240rpx;
+  font-size: 120rpx;
+  text-align: center;
+  color:#47b4c8;
+  font-weight: bold;
+}
+.top-box .total-title{
+  width:750rpx;
+  display: block;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  text-align: center;
+  color:#999;
+}
+.top-box image{
+  position: absolute;
+  width:60rpx;
+  height:60rpx;
+  right:40rpx;
+  bottom:26rpx;
+  z-index:10;
+}
+.top-box:last-child{
+  border: none;
+}
