@@ -9,9 +9,12 @@
         <text class='vel-num'>{{item.bname}}</text>
         <view class='vel-money'>
           <text wx:if='{{item.haslate == 1}}'>有逾期</text>
-          <view>
+          <!-- <view>
             <text>总欠费：</text>
             <text style='color:#47b4c8;'>￥{{item.totalpay}}</text>
+          </view> -->
+          <view>
+            <text style='color:#47b4c8;'>查看车辆</text>
           </view>
         </view>
       </view>

@@ -1,14 +1,17 @@
 <view class='container'>
   <view class='top-box'>
-    <text class='total-num'>{{totalSimCount}}</text>
-    <text class='total-title'>SIM卡总数</text>
+    <text class='total-title'>SIM卡总余量</text>
+    <text class='total-num'>{{totalSimRest}}</text>
   </view>
-  <view class='top-box'>
-    <text class='total-num'>{{simUsed}}</text>
-    <text class='total-title'>SIM卡已用</text>
-  </view>
-  <view class='top-box'>
-    <text class='total-num' style='color:#ff8b2e;'>{{simRest}}</text>
-    <text class='total-title'>SIM卡剩余</text>
+  <view class='rest-list'>
+    <view wx:for='{{simData}}' wx:key='{{index}}' class='rest-item'>
+      <view>
+        <text>当月SIM卡消耗： {{item.usenum}}</text>
+        <text>当月SIM卡添加： {{item.addnum}}</text>
+      </view>
+      <view>
+        <text>{{item.addyear}}年{{item.addmonth}}月</text>
+      </view>
+    </view>
   </view>
 </view>

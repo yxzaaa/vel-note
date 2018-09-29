@@ -5,7 +5,8 @@ Page({
     carList: [],
     isFix:false,
     belongid:0,
-    searchText:''
+    searchText:'',
+    startPage: 0
   },
   onLoad: function (options) {
     var that = this;
@@ -13,7 +14,7 @@ Page({
       title: 'XXX公司',
     });
     console.log(options.bid);
-    app.httpRequest('veh.php?kind=selectByCom&belongid='+options.bid,function(res){
+    app.httpRequest('veh.php?kind=selectByCom&belongid='+options.bid+'&startpage='+that.data.startPage,function(res){
       var carlist = [];
       res.data.map(function (item, index) {
         carlist.push(item);
@@ -37,7 +38,10 @@ Page({
   },
   onPullDownRefresh: function () {
     var that = this;
-    app.httpRequest('veh.php?kind=selectByCom&belongid=' + this.data.belongid, function (res) {
+    that.setData({
+      startPage:0
+    })
+    app.httpRequest('veh.php?kind=selectByCom&belongid=' + that.data.belongid + '&startpage=' + that.data.startPage, function (res) {
       var carList = [];
       res.data.map(function (item, index) {
         carList.push(item);
@@ -48,6 +52,23 @@ Page({
       })
       wx.stopPullDownRefresh();
     })
+  },
+  onReachBottom:function(){
+    console.log('上拉');
+    var that = this;
+    that.setData({
+      startPage: that.data.carList.length
+    });
+    var carList = that.data.carList;
+    console.log(carList);
+    app.httpRequest('veh.php?kind=selectByCom&belongid=' + that.data.belongid + '&startpage=' + that.data.startPage, function (res) {
+      res.data.map(function (item, index) {
+        carList.push(item);
+      })
+      that.setData({
+        carList: carList
+      })
+    });
   },
   searchVel: function () {
     var that = this;
@@ -78,7 +99,7 @@ Page({
     var currCar = this.data.carList[event.currentTarget.dataset.index];
     console.log(currCar);
     wx.navigateTo({
-      url: '../../pages/detail/detail?vnum=' + currCar.vnum + '&belongid=' + currCar.belongid
+      url: '../../pages/detail/detail?vid=' + currCar.vid + '&belongid=' + currCar.belongid
     })
   }
 })

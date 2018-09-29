@@ -5,10 +5,11 @@ Page({
   data: {
     isAll:true,
     isFix:false,
-    totalVelNum:126,
+    totalVelNum:0,
     topHeight:0,
     searchText:'',
-    carList:[]
+    carList:[],
+    startPage:0
   },
   onLoad: function () {
     var that = this;
@@ -25,7 +26,7 @@ Page({
         topHeight:rect.height
       })
     }).exec();
-    app.httpRequest('veh.php?kind=selectPay',function(res){
+    app.httpRequest('veh.php?kind=selectPay&startpage='+that.data.startPage,function(res){
       var carlist = [];
       res.data.map(function(item,index){
         carlist.push(item);
@@ -52,11 +53,48 @@ Page({
     }
   },
   onPullDownRefresh:function(){
-      this.showAll();
+    var that = this;
+    that.showAll();
+    app.httpRequest('veh.php?kind=selectAll', function (res) {
+      that.setData({
+        totalVelNum: res.data.length
+      })
+    });
+  },
+  onReachBottom:function(){
+    console.log('上拉');
+    var that = this;
+    that.setData({
+      startPage: that.data.carList.length
+    });
+    var carList = that.data.carList;
+    console.log(carList);
+    if(that.data.isAll == true){
+      app.httpRequest('veh.php?kind=selectPay&startpage=' + that.data.startPage, function (res) {
+        res.data.map(function (item, index) {
+          carList.push(item);
+        })
+        that.setData({
+          carList: carList
+        })
+      });
+    }else{
+      app.httpRequest('veh.php?kind=selectLate&startpage=' + that.data.startPage, function (res) {
+        res.data.map(function (item, index) {
+          carList.push(item);
+        })
+        that.setData({
+          carList: carList
+        })
+      });
+    }
   },
   showAll:function(){
     var that = this;
-    app.httpRequest('veh.php?kind=selectPay', function (res) {
+    that.setData({
+      startPage: 0
+    });
+    app.httpRequest('veh.php?kind=selectPay&startpage=' + that.data.startPage, function (res) {
       var carlist = [];
       res.data.map(function (item, index) {
         carlist.push(item);
@@ -71,11 +109,15 @@ Page({
   },
   showLate:function(){
     var that = this;
-    app.httpRequest('veh.php?kind=selectLate', function (res) {
+    that.setData({
+      startPage: 0
+    });
+    app.httpRequest('veh.php?kind=selectLate&startpage=' + this.data.startPage, function (res) {
       var carlist = [];
       res.data.map(function (item, index) {
         carlist.push(item);
       })
+      console.log(carlist);
       that.setData({
         carList: carlist,
         isAll:false
@@ -110,7 +152,7 @@ Page({
     var currCar = this.data.carList[event.currentTarget.dataset.index];
     console.log(currCar);
     wx.navigateTo({
-      url: '../../pages/detail/detail?vnum='+currCar.vnum+'&belongid='+currCar.belongid
+      url: '../../pages/detail/detail?vid='+currCar.vid+'&belongid='+currCar.belongid
     })
   }
 })

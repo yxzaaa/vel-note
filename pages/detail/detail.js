@@ -14,7 +14,7 @@ Page({
       backgroundColor: '#47b4c8',
     });
     console.log(options);
-    app.httpRequest('veh.php?kind=selectByVeh&vnum='+options.vnum+'&belongid='+options.belongid,function(res){
+    app.httpRequest('veh.php?kind=selectByVeh&vid='+options.vid+'&belongid='+options.belongid,function(res){
       console.log(res.data);
       that.setData({
         carDetail:res.data[0]

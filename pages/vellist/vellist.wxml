@@ -10,7 +10,7 @@
         <view class='vel-money'>
           <text wx:if='{{item.islate == 1}}'>逾期</text>
           <view>
-            <text>总欠费：</text>
+            <text>欠费：</text>
             <text style='color:#47b4c8;'>￥{{item.spay}}</text>
           </view>
         </view>

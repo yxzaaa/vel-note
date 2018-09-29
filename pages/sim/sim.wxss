@@ -1,27 +1,28 @@
 /* pages/sim/sim.wxss */
 .top-box{
   width:750rpx;
-  height:33.33vh;
-  background: #fff;
+  height:150rpx;
+  background: #47b4c8;
   position: relative;
   border-bottom:1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  padding:0rpx 50rpx;
 }
 .top-box .total-num{
   display: block;
-  width:750rpx;
-  line-height: 240rpx;
-  font-size: 120rpx;
+  line-height: 150rpx;
+  font-size: 54rpx;
   text-align: center;
-  color:#47b4c8;
+  color:#b2e5ee;
   font-weight: bold;
 }
 .top-box .total-title{
-  width:750rpx;
   display: block;
-  line-height: 80rpx;
-  font-size: 36rpx;
+  line-height: 150rpx;
+  font-size: 42rpx;
   text-align: center;
-  color:#999;
+  color:#fff;
 }
 .top-box image{
   position: absolute;
@@ -33,4 +34,28 @@
 }
 .top-box:last-child{
   border: none;
+}
+.rest-list{
+  width:750rpx;
+  padding:10rpx 30rpx;
+}
+.rest-item{
+  width:690rpx;
+  padding:10rpx 0rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20rpx;
+}
+.rest-item>view:first-child>text{
+  font-size:34rpx;
+  color:#47b4c8;
+  display: block;
+  line-height: 50rpx;
+}
+.rest-item>view:last-child>text{
+  font-size:34rpx;
+  color:#999;
+  display: block;
+  line-height: 100rpx;
 }
